@@ -1,0 +1,29 @@
+{
+  "name": "11-node_sql",
+  "version": "1.0.0",
+  "description": "Trilogy / Vanderbilt FSF Homework 11 - MySQL + Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CapableCreative/11-Node_SQL.git"
+  },
+  "keywords": [
+    "node",
+    "mysql",
+    "database",
+    "js"
+  ],
+  "author": "Stephen Fox - Capable + Creative",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CapableCreative/11-Node_SQL/issues"
+  },
+  "homepage": "https://github.com/CapableCreative/11-Node_SQL#readme",
+  "dependencies": {
+    "inquirer": "^7.0.0",
+    "mysql": "^2.17.1"
+  }
+}
