@@ -78,7 +78,7 @@ function postAuction() {
 function bidAuction(){
     connection.query("SELECT * FROM auctionItems", function(err,results) {
         if (err) throw err;
-        //console.log(results);
+        console.log(results);
         inquirer.prompt([{
             name: "choice",
             type: "rawlist",
@@ -103,6 +103,7 @@ function bidAuction(){
                     chosenItem = results[i];
                 }
             }
+            console.log("++++++++++++++++++++++" + chosenItem + "++++++++");
             if (chosenItem.higestBid < parseInt(answer.bid)) {
                 connection.query(
                     "UPDATE auctionItems SET ? WHERE ?",[
