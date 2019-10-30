@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err){
     if (err) throw err;
-    console.log("Connected as id:" +connection.threadId);
+    console.log("Connected as id: " +connection.threadId);
     start();
 });
 
@@ -103,21 +103,31 @@ function bidAuction(){
                     chosenItem = results[i];
                 }
             }
-            console.log("++++++++++++++++++++++" + chosenItem + "++++++++");
-            if (chosenItem.higestBid < parseInt(answer.bid)) {
+            
+            let parsedHighestBid = parseInt(chosenItem.highestBid);
+            let parsedBid = parseInt(answer.bid);
+            let itemId = chosenItem.id;
+             console.log("   Item id: " + itemId);
+             console.log(" ");
+             console.log("   >=< The starting bid is:        " + chosenItem.startingBid);
+             console.log("    ^  The current highest bid is: " + parsedHighestBid);
+             console.log("    >  Your Bid:                   " + parsedBid);
+            if ((chosenItem.highestBid < parsedBid) && (parsedBid > chosenItem.startingBid)) {
                 connection.query(
-                    "UPDATE auctionItems SET ? WHERE ?",[
-                        {highestBid: answer.bid,},
-                        {id: chosenItem.id}
+                    "UPDATE homework11_db.auctionItems SET ? WHERE ?",[
+                        {highestBid: parsedBid},
+                        {id: itemId}
                     ],
                     function(error) {
                         if (error) throw err;
-                        console.log("Bid successfully placed.");
+                        console.log("!!! ------ Your bid successfully placed. -------- (-_-) !!!");
+                        console.log(" ");
                         start();
                     }
                 );
             } else {
                 console.log("Your bid was too low. Give it one more try.");
+                console.log(" ");
                 start();
                 }
             });
